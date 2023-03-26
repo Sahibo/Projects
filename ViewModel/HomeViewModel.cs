@@ -22,7 +22,8 @@ namespace ECommerce.ViewModel
         private readonly DbService _service;
         public ObservableCollection<Category> _categories { get; set; } = new();
         private ObservableCollection<Product> _products;
-        public Product? _selectedProduct { get; set; } = new();
+
+        public Product product { get; set; } = new();
 
         public event PropertyChangedEventHandler PropertyChanged;
        
@@ -36,10 +37,10 @@ namespace ECommerce.ViewModel
 
             //_products = new ObservableCollection<Product>();
 
-            _messenger.Register<ParameterMessage>(this, param =>
-            {
-                _selectedProduct = param?.Message as Product;
-            });
+            //_messenger.Register<ParameterMessage>(this, param =>
+            //{
+            //    _selectedProduct = param?.Message as Product;
+            //});
 
         }
         protected virtual void OnPropertyChanged(string propertyName)
@@ -89,28 +90,14 @@ namespace ECommerce.ViewModel
             }
         }
 
-        private int _selectedId;
-        public int SelectedId
+        public RelayCommand<Product> ProductBtn
         {
-            get => _selectedId;
-            set
+            get => new RelayCommand<Product>(product =>
             {
-                if (_selectedId != value)
-                {
-                    _selectedId = value;
-                    OnPropertyChanged(nameof(SelectedId));
-                }
-            }
+                    _navigationService.NavigateTo<ProductViewModel>(new ParameterMessage { Message = product });
+            });
         }
-        public RelayCommand ProductBtn => new RelayCommand(() =>
-        {
-            // Retrieve the selected product from the database using the SelectedId property
-            _selectedProduct = _db.Products.SingleOrDefault(p => p.Id == SelectedId);
 
-            // Navigate to the ProductDetailsView and pass the selected product as a parameter
-            _navigationService?.NavigateTo<ProductViewModel>(new ParameterMessage { Message = _selectedProduct });
-        });
-        
 
     }
 }

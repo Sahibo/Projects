@@ -90,13 +90,15 @@
                 </Grid.ColumnDefinitions>
 
                 <Grid Column="0">
-                    <Image Source="{Binding ImageUrl}"/>
+                    <Image Source="{Binding product.ImageUrl}"/>
 
                 </Grid>
 
                 <Grid Column="1">
                     <StackPanel>
-                        <TextBlock Text="{Binding Name}"/>
+                        <TextBlock Text="{Binding product.Name}"
+                                   Foreground="Black"
+                                   Height="50"/>
                     </StackPanel>
                 </Grid>
             </Grid>

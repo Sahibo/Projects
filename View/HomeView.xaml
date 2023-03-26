@@ -154,8 +154,8 @@
                                             </StackPanel.Effect>
 
                                             <Button Content="{Binding Name}"
-                                                    Command="{Binding ProductBtn}"
-                                                    CommandParameter="{Binding SelectedId}"
+                                                    Command="{Binding DataContext.ProductBtn, ElementName=Home}"
+                                                    CommandParameter="{Binding DataContext.product, ElementName=Home}"
                                                        HorizontalContentAlignment="Center"
                                                        Margin="5" FontSize="20"
                                                        Foreground="#0f1b27" 
