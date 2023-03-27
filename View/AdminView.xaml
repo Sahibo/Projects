@@ -3,8 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             d:DataContext="{d:DesignInstance Type=viewModel:AdminViewModel}"
              xmlns:local="clr-namespace:ECommerce.View"
              xmlns:mD="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:viewModel="clr-namespace:ECommerce.ViewModel"
              mc:Ignorable="d" 
              Height="600" Width="900">
     <Grid>
@@ -43,14 +45,55 @@
             </Button>
         </Grid>
 
-        <Grid Grid.Row="1">
+        <Grid Grid.Row="1" Background="#0f1b27">
 
-            <Grid.RowDefinitions>
-                <RowDefinition Height="0.12*"/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
+            <TabControl>
+                <TabItem Background="#d9d9d9">
+                    <TabItem.Header>
+                        <TextBlock Text="Products" Foreground="#d9d9d9" 
+                                   FontWeight="SemiBold" FontSize="18"/>
+                    </TabItem.Header>
 
+                    <DataGrid Background="#d9d9d9" ItemsSource="{Binding}">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Id"
+                                                Binding="{Binding Id}" Width="*"/>
+                            <DataGridTextColumn Header="Name" 
+                                                Binding="{Binding Name}" Width="*"/>
+                            
+                        </DataGrid.Columns>
+                    </DataGrid>
 
+                </TabItem>
+
+                <TabItem>
+
+                    <TabItem.Header>
+                        <TextBlock Text="Categories" Foreground="#d9d9d9" 
+                                       FontWeight="SemiBold" FontSize="18"/>
+                    </TabItem.Header>
+
+                </TabItem>
+
+                    <TabItem>
+
+                        <TabItem.Header>
+                            <TextBlock Text="Admins" Foreground="#d9d9d9" 
+                                       FontWeight="SemiBold" FontSize="18"/>
+                        </TabItem.Header>
+
+                    </TabItem>
+
+                    <TabItem>
+
+                        <TabItem.Header>
+                            <TextBlock Text="Orders" Foreground="#d9d9d9" 
+                                       FontWeight="SemiBold" FontSize="18"/>
+                        </TabItem.Header>
+
+                    </TabItem>
+
+                </TabControl>
         </Grid>
     </Grid>
 </UserControl>

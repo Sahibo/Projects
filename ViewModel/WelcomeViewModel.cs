@@ -33,25 +33,39 @@ namespace ECommerce.ViewModel
         //{
         //    get => new RelayCommand<object>(param =>
         //    {
+        //        var user = _users.SingleOrDefault(u => u.Name == Email);
+
         //        if (param != null)
         //        {
         //            var passwordBox = (PasswordBox)param;
         //            Password = passwordBox.Password;
         //        }
 
-        //        var user = _users.SingleOrDefault(u => u.Email == Email);
-
-        //        if (user != null && Password == user.Password)
+        //        if (user != null && Password == user.Password && Email == user.Name && user.Role != "User")
         //        {
-        //            _navigationService?.NavigateTo<HomeViewModel>();
-        //        }
-        //        else if (user != null)
-        //        {
-        //            MessageBox.Show("Invalid password");
+        //            _navigationService?.NavigateTo<AdminViewModel>();
         //        }
         //        else
         //        {
-        //            MessageBox.Show("User not found");
+                    
+        //            user = _users.SingleOrDefault(u => u.Email == Email);
+
+        //            if (user != null && Password == user.Password && Email == user.Name && user.Role != "User")
+        //            {
+        //                _navigationService?.NavigateTo<AdminViewModel>();
+        //            }
+        //            else if (user != null && Password == user.Password)
+        //            {
+        //                _navigationService?.NavigateTo<HomeViewModel>();
+        //            }
+        //            else if (user != null)
+        //            {
+        //                MessageBox.Show("Invalid password");
+        //            }
+        //            else
+        //            {
+        //                MessageBox.Show("User not found");
+        //            }
         //        }
         //    });
         //}
@@ -68,7 +82,7 @@ namespace ECommerce.ViewModel
         {
             get => new(() =>
             {
-                _navigationService?.NavigateTo<HomeViewModel>();
+                _navigationService?.NavigateTo<AdminViewModel>();
             });
         }
 

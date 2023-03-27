@@ -34,6 +34,7 @@ namespace ECommerce
             Container.RegisterSingleton<RegisterViewModel>();
             Container.RegisterSingleton<HomeViewModel>();
             Container.RegisterSingleton<ProductViewModel>();
+            Container.RegisterSingleton<AdminViewModel>();
 
             Container.Verify();
         }

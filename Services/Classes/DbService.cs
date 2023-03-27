@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Reflection.Metadata;
+using ECommerce.View;
 using GalaSoft.MvvmLight.Command;
 
 namespace ECommerce.Services.Classes
