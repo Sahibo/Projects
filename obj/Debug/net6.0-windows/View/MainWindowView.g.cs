@@ -10,6 +10,8 @@
 //------------------------------------------------------------------------------
 
 using ECommerceAdmin;
+using ECommerceAdmin.View;
+using ECommerceAdmin.ViewModel;
 using System;
 using System.Diagnostics;
 using System.Windows;
