@@ -60,8 +60,27 @@
                             <RowDefinition Height="7*"/>
                             <RowDefinition/>
                         </Grid.RowDefinitions>
-                        <ScrollViewer Grid.Row="1">
 
+                        <WrapPanel Grid.Row="0">
+                            <TextBox Height="55" Width="340"
+                                     mD:HintAssist.Hint="Search by Name or Category Id"
+                                     Margin="15 0 0  0"
+                                     BorderBrush="{DynamicResource MaterialDesignDivider}" 
+                                     Style="{StaticResource MaterialDesignOutlinedTextBox}" FontSize="16"/>
+                            <Button Height="55" Width="100"
+                                    Background="#0f1b27">
+                                <mD:PackIcon Kind="Search" Margin="5"
+                                             Height="35" Width="50"
+                                             Foreground="#d9d9d9"/>
+                            </Button>
+                            <!--<ComboBox Height="55" Width="100" 
+                                      BorderBrush="{DynamicResource MaterialDesignDivider}"
+                                      Style="{StaticResource MaterialDesignOutlinedComboBox}">
+                            </ComboBox>-->
+
+                        </WrapPanel>
+
+                        <ScrollViewer Grid.Row="1">
                             <ListBox ItemsSource="{Binding Products}">
                                 <ListBox.ItemTemplate>
                                     <DataTemplate>
@@ -111,6 +130,71 @@
                                        FontWeight="SemiBold" FontSize="18"/>
                     </TabItem.Header>
 
+                    <Grid Background="#d9d9d9">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition Height="7*"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+
+                        <WrapPanel Grid.Row="0">
+                            <TextBox Height="55" Width="340"
+                                     mD:HintAssist.Hint="Search by Category or Gender"
+                                     Margin="15 0 0  0"
+                                     BorderBrush="{DynamicResource MaterialDesignDivider}" 
+                                     Style="{StaticResource MaterialDesignOutlinedTextBox}" FontSize="16"/>
+                            <Button Height="55" Width="100"
+                                    Background="#0f1b27">
+                                <mD:PackIcon Kind="Search" Margin="5"
+                                             Height="35" Width="50"
+                                             Foreground="#d9d9d9"/>
+                            </Button>
+                            <!--<ComboBox Height="55" Width="100" 
+                                      BorderBrush="{DynamicResource MaterialDesignDivider}"
+                                      Style="{StaticResource MaterialDesignOutlinedComboBox}">
+                            </ComboBox>-->
+
+                        </WrapPanel>
+
+                        <ScrollViewer Grid.Row="1">
+                            <ListBox ItemsSource="{Binding Categories}">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <WrapPanel>
+                                            <Image Width="50" Height="50" Source="{Binding ImageUrl}" Margin="5"/>
+                                            <StackPanel>
+                                                <WrapPanel>
+                                                    <TextBlock Text="{Binding Id}" FontWeight="Bold" Margin="5 0"/>
+                                                    <TextBlock Text="{Binding Name}" FontWeight="Bold" Margin="5 0"/>
+                                                </WrapPanel>
+                                                <TextBlock Text="{Binding Make}" Margin="5 0"/>
+                                                <WrapPanel>
+                                                    <TextBlock Text="Category ID: " Margin="5 0 0 0"/>
+                                                    <TextBlock Text="{Binding CategoryId}" Margin="5 0"/>
+                                                </WrapPanel>
+                                            </StackPanel>
+                                        </WrapPanel>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+                        </ScrollViewer>
+
+                        <WrapPanel Grid.Row="2">
+                            <Button Content="Delete" FontWeight="Bold"
+                                    Height="59" Width="300"
+                                    Background="#0f1b27" Foreground="#d9d9d9"
+                                    BorderBrush="#d9d9d9"/>
+                            <Button Content="Edit" FontWeight="Bold"
+                                    Height="59" Width="300"
+                                    Background="#0f1b27" Foreground="#d9d9d9"
+                                    BorderBrush="#d9d9d9"/>
+                            <Button Content="Add" FontWeight="Bold"
+                                    Height="59" Width="300"
+                                    Background="#0f1b27" Foreground="#d9d9d9"
+                                    BorderBrush="#d9d9d9"/>
+                        </WrapPanel>
+                    </Grid>
+
                 </TabItem>
 
                 <TabItem>
@@ -120,6 +204,71 @@
                                        FontWeight="SemiBold" FontSize="18"/>
                     </TabItem.Header>
 
+                    <Grid Background="#d9d9d9">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition Height="7*"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+
+                        <WrapPanel Grid.Row="0">
+                            <TextBox Height="55" Width="340"
+                                     mD:HintAssist.Hint="Search by Name or Category Id"
+                                     Margin="15 0 0  0"
+                                     BorderBrush="{DynamicResource MaterialDesignDivider}" 
+                                     Style="{StaticResource MaterialDesignOutlinedTextBox}" FontSize="16"/>
+                            <Button Height="55" Width="100"
+                                    Background="#0f1b27">
+                                <mD:PackIcon Kind="Search" Margin="5"
+                                             Height="35" Width="50"
+                                             Foreground="#d9d9d9"/>
+                            </Button>
+                            <!--<ComboBox Height="55" Width="100" 
+                                      BorderBrush="{DynamicResource MaterialDesignDivider}"
+                                      Style="{StaticResource MaterialDesignOutlinedComboBox}">
+                            </ComboBox>-->
+
+                        </WrapPanel>
+
+                        <ScrollViewer Grid.Row="1">
+                            <ListBox ItemsSource="{Binding Admins}">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <WrapPanel>
+                                            <Image Width="50" Height="50" Source="{Binding ImageUrl}" Margin="5"/>
+                                            <StackPanel>
+                                                <WrapPanel>
+                                                    <TextBlock Text="{Binding Id}" FontWeight="Bold" Margin="5 0"/>
+                                                    <TextBlock Text="{Binding Name}" FontWeight="Bold" Margin="5 0"/>
+                                                </WrapPanel>
+                                                <TextBlock Text="{Binding Make}" Margin="5 0"/>
+                                                <WrapPanel>
+                                                    <TextBlock Text="Category ID: " Margin="5 0 0 0"/>
+                                                    <TextBlock Text="{Binding CategoryId}" Margin="5 0"/>
+                                                </WrapPanel>
+                                            </StackPanel>
+                                        </WrapPanel>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+                        </ScrollViewer>
+
+                        <WrapPanel Grid.Row="2">
+                            <Button Content="Delete" FontWeight="Bold"
+                                    Height="59" Width="300"
+                                    Background="#0f1b27" Foreground="#d9d9d9"
+                                    BorderBrush="#d9d9d9"/>
+                            <Button Content="Edit" FontWeight="Bold"
+                                    Height="59" Width="300"
+                                    Background="#0f1b27" Foreground="#d9d9d9"
+                                    BorderBrush="#d9d9d9"/>
+                            <Button Content="Add" FontWeight="Bold"
+                                    Height="59" Width="300"
+                                    Background="#0f1b27" Foreground="#d9d9d9"
+                                    BorderBrush="#d9d9d9"/>
+                        </WrapPanel>
+                    </Grid>
+
                 </TabItem>
 
                 <TabItem>
@@ -128,6 +277,71 @@
                         <TextBlock Text="Orders" Foreground="#d9d9d9" 
                                        FontWeight="SemiBold" FontSize="18"/>
                     </TabItem.Header>
+
+                    <Grid Background="#d9d9d9">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition Height="7*"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+
+                        <WrapPanel Grid.Row="0">
+                            <TextBox Height="55" Width="340"
+                                     mD:HintAssist.Hint="Search by Name or Category Id"
+                                     Margin="15 0 0  0"
+                                     BorderBrush="{DynamicResource MaterialDesignDivider}" 
+                                     Style="{StaticResource MaterialDesignOutlinedTextBox}" FontSize="16"/>
+                            <Button Height="55" Width="100"
+                                    Background="#0f1b27">
+                                <mD:PackIcon Kind="Search" Margin="5"
+                                             Height="35" Width="50"
+                                             Foreground="#d9d9d9"/>
+                            </Button>
+                            <!--<ComboBox Height="55" Width="100" 
+                                      BorderBrush="{DynamicResource MaterialDesignDivider}"
+                                      Style="{StaticResource MaterialDesignOutlinedComboBox}">
+                            </ComboBox>-->
+
+                        </WrapPanel>
+
+                        <ScrollViewer Grid.Row="1">
+                            <ListBox ItemsSource="{Binding Orders}">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <WrapPanel>
+                                            <Image Width="50" Height="50" Source="{Binding ImageUrl}" Margin="5"/>
+                                            <StackPanel>
+                                                <WrapPanel>
+                                                    <TextBlock Text="{Binding Id}" FontWeight="Bold" Margin="5 0"/>
+                                                    <TextBlock Text="{Binding Name}" FontWeight="Bold" Margin="5 0"/>
+                                                </WrapPanel>
+                                                <TextBlock Text="{Binding Make}" Margin="5 0"/>
+                                                <WrapPanel>
+                                                    <TextBlock Text="Category ID: " Margin="5 0 0 0"/>
+                                                    <TextBlock Text="{Binding CategoryId}" Margin="5 0"/>
+                                                </WrapPanel>
+                                            </StackPanel>
+                                        </WrapPanel>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+                        </ScrollViewer>
+
+                        <WrapPanel Grid.Row="2">
+                            <Button Content="Delete" FontWeight="Bold"
+                                    Height="59" Width="300"
+                                    Background="#0f1b27" Foreground="#d9d9d9"
+                                    BorderBrush="#d9d9d9"/>
+                            <Button Content="Edit" FontWeight="Bold"
+                                    Height="59" Width="300"
+                                    Background="#0f1b27" Foreground="#d9d9d9"
+                                    BorderBrush="#d9d9d9"/>
+                            <Button Content="Add" FontWeight="Bold"
+                                    Height="59" Width="300"
+                                    Background="#0f1b27" Foreground="#d9d9d9"
+                                    BorderBrush="#d9d9d9"/>
+                        </WrapPanel>
+                    </Grid>
 
                 </TabItem>
 

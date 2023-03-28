@@ -1,15 +1,11 @@
 ﻿using System.Collections.ObjectModel;
 using System.Linq;
-using System.Runtime.InteropServices.ComTypes;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Messaging;
 using ECommerceAdmin.Services.Interfaces;
 using ECommerceAdmin.Data.DbContext;
 using ECommerceAdmin.Model;
-using ECommerceAdmin.Services.Classes;
 using System.ComponentModel;
-using MaterialDesignColors.Recommended;
-using Microsoft.EntityFrameworkCore;
 
 namespace ECommerceAdmin.ViewModel
 {
@@ -19,9 +15,31 @@ namespace ECommerceAdmin.ViewModel
         private IMessenger? _messenger;
 
         private readonly EcommerceContext _db;
-        //private readonly DbService _service;
+        
 
         private ObservableCollection<Product> _products;
+        private ObservableCollection<Category> _categories;
+        private ObservableCollection<User> _admins;
+        private ObservableCollection<Order> _orders;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        
+        public AdminViewModel(INavigationService navigationService, IMessenger messenger)
+        {
+            _navigationService = navigationService;
+            _messenger = messenger;
+
+            _db = new EcommerceContext();
+
+            Products = new ObservableCollection<Product>(_db.Products.ToList());
+            Categories = new ObservableCollection<Category>(_db.Categories.ToList());
+            Admins = new ObservableCollection<User>(_db.Users.ToList());
+            Orders = new ObservableCollection<Order>(_db.Orders.ToList());
+
+
+
+        }
+
         public ObservableCollection<Product> Products
         {
             get => _products;
@@ -34,54 +52,42 @@ namespace ECommerceAdmin.ViewModel
                 }
             }
         }
-        private ObservableCollection<ProductAttribute> _productAttributes;
-        public ObservableCollection<ProductAttribute> ProductAttributes
+        public ObservableCollection<Category> Categories
         {
-            get => _productAttributes;
+            get => _categories;
             set
             {
-                if (_productAttributes != value)
+                if (_categories != value)
                 {
-                    _productAttributes = value;
-                    OnPropertyChanged(nameof(ProductAttributes));
+                    _categories = value;
+                    OnPropertyChanged(nameof(Categories));
                 }
             }
         }
-        public AdminViewModel(INavigationService navigationService, IMessenger messenger)
+        public ObservableCollection<User> Admins
         {
-            _navigationService = navigationService;
-            _messenger = messenger;
-
-            _db = new EcommerceContext();
-            //_service = new DbService(_db);
-
-            //var query = _db.Products
-            //    .Join(_db.ProductAttributes,
-            //        pa => pa.Id,
-            //        p => p.ProductId,
-            //        (pa, p) => new { Product = pa, ProductAttribute = p });
-
-            var query = _db.ProductAttributes.Include(x => x.Product);
-
-            Products = new ObservableCollection<Product>(_db.Products.ToList());
-            ProductAttributes = new ObservableCollection<ProductAttribute>(query.ToList());
-            //Query = new ObservableCollection<object>(query);
-
+            get => _admins;
+            set
+            {
+                if (_admins != value)
+                {
+                    _admins = value;
+                    OnPropertyChanged(nameof(Admins));
+                }
+            }
         }
-        //private ObservableCollection<object> _query;
-        //public ObservableCollection<object> Query
-        //{
-        //    get => _query;
-        //    set
-        //    {
-        //        if (_query != value)
-        //        {
-        //            _query = value;
-        //            OnPropertyChanged(nameof(Query));
-        //        }
-        //    }
-        //}
-        public event PropertyChangedEventHandler PropertyChanged;
+        public ObservableCollection<Order> Orders
+        {
+            get => _orders;
+            set
+            {
+                if (_orders != value)
+                {
+                    _orders = value;
+                    OnPropertyChanged(nameof(Orders));
+                }
+            }
+        }
 
         protected void OnPropertyChanged(string propertyName)
         {
