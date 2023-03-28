@@ -36,8 +36,6 @@ namespace ECommerceAdmin.ViewModel
             Admins = new ObservableCollection<User>(_db.Users.ToList());
             Orders = new ObservableCollection<Order>(_db.Orders.ToList());
 
-
-
         }
 
         public ObservableCollection<Product> Products
