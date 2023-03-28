@@ -1,0 +1,22 @@
+﻿<Application x:Class="ECommerceAdmin.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:ECommerceAdmin"
+             xmlns:view="clr-namespace:ECommerceAdmin.View"
+             xmlns:viewModel="clr-namespace:ECommerceAdmin.ViewModel"
+             StartupUri="/View/AdminView.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+
+            <DataTemplate DataType="{x:Type viewModel:AdminViewModel}">
+                <view:AdminView></view:AdminView>
+            </DataTemplate>
+            
+
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
