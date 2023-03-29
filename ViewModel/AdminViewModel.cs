@@ -6,6 +6,8 @@ using ECommerceAdmin.Services.Interfaces;
 using ECommerceAdmin.Data.DbContext;
 using ECommerceAdmin.Model;
 using System.ComponentModel;
+using GalaSoft.MvvmLight.Command;
+using System.Windows.Markup;
 
 namespace ECommerceAdmin.ViewModel
 {
@@ -15,7 +17,6 @@ namespace ECommerceAdmin.ViewModel
         private IMessenger? _messenger;
 
         private readonly EcommerceContext _db;
-        
 
         private ObservableCollection<Product> _products;
         private ObservableCollection<Category> _categories;
@@ -89,8 +90,43 @@ namespace ECommerceAdmin.ViewModel
 
         protected void OnPropertyChanged(string propertyName)
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            PropertyChanged.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
+        private Product _selectedProduct;
+        public Product SelectedProduct
+        {
+            get { return _selectedProduct; }
+            set
+            {
+                if (_selectedProduct != value)
+                {
+                    _selectedProduct = value;
+                    OnPropertyChanged(nameof(SelectedProduct));
+                }
+            }
+        }
+
+        public RelayCommand AddProductBtn
+        {
+            get => new(() =>
+            {
+                _navigationService.NavigateTo<AddProductViewModel>();
+            });
+        }
+
+        public RelayCommand DeleteProductBtn
+        {
+            get => new(() =>
+            {
+                if (_selectedProduct != null)
+                {
+                    _db.Products.Remove(_selectedProduct);
+                    _db.SaveChanges();
+                    //Not working here
+                    OnPropertyChanged(nameof(Products));
+                }
+            });
+        }
     }
 }
