@@ -81,7 +81,7 @@ namespace ECommerce.ViewModel
         {
             get => new(() =>
             {
-                _navigationService?.NavigateTo<WelcomeViewModel>();
+                _navigationService.NavigateTo<WelcomeViewModel>();
             });
         }
 

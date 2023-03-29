@@ -1,6 +1,5 @@
 ﻿using System.Collections.ObjectModel;
 using System.Linq;
-using System.Runtime.InteropServices.ComTypes;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Messaging;
 using ECommerce.Services.Interfaces;
@@ -8,7 +7,7 @@ using ECommerce.Data.DbContext;
 using ECommerce.Models;
 using ECommerce.Services.Classes;
 using System.ComponentModel;
-using MaterialDesignColors.Recommended;
+using Microsoft.EntityFrameworkCore;
 
 namespace ECommerce.ViewModel
 {
@@ -54,16 +53,33 @@ namespace ECommerce.ViewModel
             _db = new ECommerceContext();
             _service = new DbService(_db);
 
-            var query = _db.Products
-                .Join(_db.ProductAttributes,
-                    pa => pa.Id,
-                    p => p.ProductId,
-                    (pa, p) => new { Product = pa, ProductAttribute = p });
+            //var query = _db.Products
+            //    .Join(_db.ProductAttributes,
+            //        pa => pa.Id,
+            //        p => p.ProductId,
+            //        (pa, p) => new { Product = pa, ProductAttribute = p });
+
+            var query = _db.ProductAttributes.Include(x => x.Product);
+
 
             Products = new ObservableCollection<Product>(query.Select(x => x.Product).ToList());
-            ProductAttributes = new ObservableCollection<ProductAttribute>(query.Select(x => x.ProductAttribute).ToList());
+            ProductAttributes = new ObservableCollection<ProductAttribute>(query.ToList());
+            //Query = new ObservableCollection<object>(query);
 
         }
+        //private ObservableCollection<object> _query;
+        //public ObservableCollection<object> Query
+        //{
+        //    get => _query;
+        //    set
+        //    {
+        //        if (_query != value)
+        //        {
+        //            _query = value;
+        //            OnPropertyChanged(nameof(Query));
+        //        }
+        //    }
+        //}
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected void OnPropertyChanged(string propertyName)

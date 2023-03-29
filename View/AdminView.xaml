@@ -54,14 +54,7 @@
                                    FontWeight="SemiBold" FontSize="18"/>
                     </TabItem.Header>
 
-                    <DataGrid Background="#d9d9d9" ItemsSource="{Binding}">
-                        <DataGrid.Columns>
-                            <DataGridTextColumn Header="Id"
-                                                Binding="{Binding Id}" Width="*"/>
-                            <DataGridTextColumn Header="Name" 
-                                                Binding="{Binding Name}" Width="*"/>
-                            
-                        </DataGrid.Columns>
+                    <DataGrid Background="#d9d9d9" ItemsSource="{Binding ProductAttributes}">
                     </DataGrid>
 
                 </TabItem>

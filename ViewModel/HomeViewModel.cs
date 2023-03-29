@@ -102,14 +102,14 @@ namespace ECommerce.ViewModel
                 }
             }
         }
-        public RelayCommand ProductBtn => new RelayCommand(() =>
-        {
-            // Retrieve the selected product from the database using the SelectedId property
-            _selectedProduct = _db.Products.SingleOrDefault(p => p.Id == SelectedId);
+        //public RelayCommand ProductBtn => new RelayCommand(() =>
+        //{
+        //    // Retrieve the selected product from the database using the SelectedId property
+        //    _selectedProduct = _db.Products.SingleOrDefault(p => p.Id == SelectedId);
 
-            // Navigate to the ProductDetailsView and pass the selected product as a parameter
-            _navigationService?.NavigateTo<ProductViewModel>(new ParameterMessage { Message = _selectedProduct });
-        });
+        //    // Navigate to the ProductDetailsView and pass the selected product as a parameter
+        //    _navigationService?.NavigateTo<ProductViewModel>(new ParameterMessage { Message = _selectedProduct });
+        //});
         
 
     }
