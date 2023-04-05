@@ -62,12 +62,14 @@
                         </Grid.RowDefinitions>
 
                         <WrapPanel Grid.Row="0">
-                            <TextBox Height="55" Width="340"
-                                     mD:HintAssist.Hint="Search by Name or Category Id"
+                            <TextBox Text="{Binding SearchProductText}"
+                                     Height="55" Width="340"
+                                     mD:HintAssist.Hint="Search by Name, Make or Category Id"
                                      Margin="15 0 0  0" FontSize="16"
                                      BorderBrush="{DynamicResource MaterialDesignDivider}" 
                                      Style="{StaticResource MaterialDesignTextBox}"/>
-                            <Button Height="55" Width="100"
+                            <Button Command="{Binding SearchProductBtn}"
+                                    Height="55" Width="100"
                                     Background="#0f1b27">
                                 <mD:PackIcon Kind="Search" Margin="5"
                                              Height="35" Width="50"
@@ -144,12 +146,14 @@
                         </Grid.RowDefinitions>
 
                         <WrapPanel Grid.Row="0">
-                            <TextBox Height="55" Width="340"
+                            <TextBox Text="{Binding SearchCategoryText}"
+                                     Height="55" Width="340"
                                      mD:HintAssist.Hint="Search by Category or Gender"
                                      Margin="15 0 0  0"  FontSize="16"
                                      BorderBrush="{DynamicResource MaterialDesignDivider}" 
                                      Style="{StaticResource MaterialDesignTextBox}"/>
-                            <Button Height="55" Width="100"
+                            <Button Command="{Binding SearchCategoryBtn}"
+                                    Height="55" Width="100"
                                     Background="#0f1b27">
                                 <mD:PackIcon Kind="Search" Margin="5"
                                              Height="35" Width="50"
@@ -163,30 +167,29 @@
                         </WrapPanel>
 
                         <ScrollViewer Grid.Row="1">
-                            <ListBox ItemsSource="{Binding Categories}">
+                            <ListBox ItemsSource="{Binding Categories}"
+                                     SelectedItem="{Binding SelectedCategory}">
                                 <ListBox.ItemTemplate>
                                     <DataTemplate>
-                                        <WrapPanel>
-                                            <Image Width="50" Height="50" Source="{Binding ImageUrl}" Margin="5"/>
-                                            <StackPanel>
-                                                <WrapPanel>
-                                                    <TextBlock Text="{Binding Id}" FontWeight="Bold" Margin="5 0"/>
-                                                    <TextBlock Text="{Binding Name}" FontWeight="Bold" Margin="5 0"/>
-                                                </WrapPanel>
-                                                <TextBlock Text="{Binding Make}" Margin="5 0"/>
-                                                <WrapPanel>
-                                                    <TextBlock Text="Category ID: " Margin="5 0 0 0"/>
-                                                    <TextBlock Text="{Binding CategoryId}" Margin="5 0"/>
-                                                </WrapPanel>
-                                            </StackPanel>
-                                        </WrapPanel>
+                                        <StackPanel>
+                                            <WrapPanel>
+                                                <TextBlock Text="{Binding Id}" FontWeight="Bold" Margin="5 0"/>
+                                                <TextBlock Text="{Binding Name}" FontWeight="Bold" Margin="5 0"/>
+                                                <TextBlock Text="{Binding Gender}" FontWeight="Bold" Margin="5 0"/>
+                                            </WrapPanel>
+                                            <WrapPanel>
+                                                <TextBlock Text="Count of products:" FontWeight="Bold" Margin="5 0"/>
+                                                <TextBlock Text="{Binding Products.Count}" FontWeight="Bold" Margin="5 0"/>
+                                            </WrapPanel>
+                                        </StackPanel>
                                     </DataTemplate>
                                 </ListBox.ItemTemplate>
                             </ListBox>
                         </ScrollViewer>
 
                         <WrapPanel Grid.Row="2">
-                            <Button Content="Delete" FontWeight="Bold"
+                            <Button Command="{Binding DeleteCategoryBtn}"
+                                    Content="Delete" FontWeight="Bold"
                                     Height="59" Width="300"
                                     Background="#0f1b27" Foreground="#d9d9d9"
                                     BorderBrush="#d9d9d9"/>
@@ -223,7 +226,8 @@
                                      Margin="15 0 0  0" FontSize="16"
                                      BorderBrush="{DynamicResource MaterialDesignDivider}" 
                                      Style="{StaticResource MaterialDesignTextBox}"/>
-                            <Button Height="55" Width="100"
+                            <Button Command="{Binding SearchAdminBtn}"
+                                    Height="55" Width="100"
                                     Background="#0f1b27">
                                 <mD:PackIcon Kind="Search" Margin="5"
                                              Height="35" Width="50"
@@ -237,7 +241,8 @@
                         </WrapPanel>
 
                         <ScrollViewer Grid.Row="1">
-                            <ListBox ItemsSource="{Binding Admins}">
+                            <ListBox ItemsSource="{Binding Admins}"
+                                     SelectedItem="{Binding SelectedAdmin}">
                                 <ListBox.ItemTemplate>
                                     <DataTemplate>
                                         <WrapPanel>
@@ -260,7 +265,8 @@
                         </ScrollViewer>
 
                         <WrapPanel Grid.Row="2">
-                            <Button Content="Delete" FontWeight="Bold"
+                            <Button Command="{Binding DeleteAdminBtn}"
+                                    Content="Delete" FontWeight="Bold"
                                     Height="59" Width="300"
                                     Background="#0f1b27" Foreground="#d9d9d9"
                                     BorderBrush="#d9d9d9"/>
@@ -297,7 +303,8 @@
                                      Margin="15 0 0  0" FontSize="16"
                                      BorderBrush="{DynamicResource MaterialDesignDivider}" 
                                      Style="{StaticResource MaterialDesignTextBox}"/>
-                            <Button Height="55" Width="100"
+                            <Button Command="{Binding SearchOrderBtn}"
+                                    Height="55" Width="100"
                                     Background="#0f1b27">
                                 <mD:PackIcon Kind="Search" Margin="5"
                                              Height="35" Width="50"
