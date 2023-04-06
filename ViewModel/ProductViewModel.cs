@@ -21,7 +21,7 @@ namespace ECommerce.ViewModel
         private IMessenger? _messenger;
         private readonly ECommerceContext _db;
         private readonly DbService _service;
-        public Product? product { get; set; }
+        public Product product { get; set; } = new();
 
         public ProductViewModel(INavigationService navigationService, IMessenger messenger)
         {
@@ -33,12 +33,9 @@ namespace ECommerce.ViewModel
 
             _messenger.Register<ParameterMessage>(this, param =>
             {
-                product = param?.Message as Product;
+                product = param.Message as Product;
             });
 
         }
-
-
-        
     }
 }

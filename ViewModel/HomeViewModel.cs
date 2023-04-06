@@ -92,9 +92,9 @@ namespace ECommerce.ViewModel
 
         public RelayCommand<Product> ProductBtn
         {
-            get => new RelayCommand<Product>(product =>
+            get => new(product =>
             {
-                    _navigationService.NavigateTo<ProductViewModel>(new ParameterMessage { Message = product });
+                    _navigationService.NavigateTo<ProductViewModel>(product);
             });
         }
 
