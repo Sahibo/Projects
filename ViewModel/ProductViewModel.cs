@@ -11,6 +11,7 @@ using ECommerce.Models;
 using ECommerce.Services.Classes;
 using ECommerce.Services.Interfaces;
 using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Messaging;
 
 namespace ECommerce.ViewModel
@@ -25,17 +26,29 @@ namespace ECommerce.ViewModel
 
         public ProductViewModel(INavigationService navigationService, IMessenger messenger)
         {
-            _navigationService = navigationService;
             _messenger = messenger;
+            _navigationService = navigationService;
 
             _db = new ECommerceContext();
             _service = new DbService(_db);
 
-            _messenger.Register<ParameterMessage>(this, param =>
+            _messenger.Register<DataMessage>(this, message =>
             {
-                product = param.Message as Product;
+                product = message.Data as Product;
+                if (product != null)
+                {
+                    MessageBox.Show(product.Id.ToString());
+                }
             });
 
+        }
+
+        public RelayCommand BackBtn
+        {
+            get => new(() =>
+            {
+                _navigationService.NavigateTo<HomeViewModel>();
+            });
         }
     }
 }

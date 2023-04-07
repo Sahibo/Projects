@@ -146,8 +146,9 @@
                         <ItemsControl ItemsSource="{Binding Products}">
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
-                                    <Border HorizontalAlignment="Left"
+                                    <Border HorizontalAlignment="Left" 
                                             Height="350" Width="340" Margin="10">
+
                                         <StackPanel>
                                             <StackPanel.Effect>
                                                 <DropShadowEffect BlurRadius="20" ShadowDepth="1"/>
@@ -161,7 +162,7 @@
                                                        Foreground="#0f1b27" 
                                                        FontFamily="Global Serif"/>
 
-                                            <Border Width="320" Height="250" Margin="10 20 10 0" BorderBrush="Black">
+                                            <Border Width="320" Height="250" Margin="10 20 10 0">
                                                 <Border.Background>
                                                     <ImageBrush ImageSource="{Binding ImageUrl}"
                                                                 Stretch="Uniform"/>
