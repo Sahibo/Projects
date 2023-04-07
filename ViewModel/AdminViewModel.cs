@@ -11,6 +11,7 @@ using System.Windows.Markup;
 using System.Threading.Tasks;
 using ECommerceAdmin.Services.Classes;
 using Microsoft.IdentityModel.Tokens;
+using System.Runtime.CompilerServices;
 
 namespace ECommerceAdmin.ViewModel
 {
@@ -27,23 +28,14 @@ namespace ECommerceAdmin.ViewModel
         private ObservableCollection<User> _admins;
         private ObservableCollection<Order> _orders;
 
-        //public event PropertyChangedEventHandler PropertyChanged;
-
-        //protected void OnPropertyChanged(string propertyName)
-        //{
-        //    PropertyChanged.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        //}
-
+        
         public ObservableCollection<Product> Products
         {
             get => _products;
             set
             {
-                if (_products != value)
-                {
-                    _products = value;
-                    //OnPropertyChanged(nameof(Products));
-                }
+                Set(ref _products, value);
+               
             }
         }
         public ObservableCollection<Category> Categories
@@ -51,11 +43,7 @@ namespace ECommerceAdmin.ViewModel
             get => _categories;
             set
             {
-                if (_categories != value)
-                {
-                    _categories = value;
-                    //OnPropertyChanged(nameof(Categories));
-                }
+                Set(ref _categories, value);
             }
         }
         public ObservableCollection<User> Admins
@@ -63,11 +51,7 @@ namespace ECommerceAdmin.ViewModel
             get => _admins;
             set
             {
-                if (_admins != value)
-                {
-                    _admins = value;
-                    //OnPropertyChanged(nameof(Admins));
-                }
+                Set(ref _admins, value);
             }
         }
         public ObservableCollection<Order> Orders
@@ -75,11 +59,7 @@ namespace ECommerceAdmin.ViewModel
             get => _orders;
             set
             {
-                if (_orders != value)
-                {
-                    _orders = value;
-                    //OnPropertyChanged(nameof(Orders));
-                }
+                Set(ref _orders, value);
             }
         }
 
@@ -106,11 +86,7 @@ namespace ECommerceAdmin.ViewModel
             get { return _selectedProduct; }
             set
             {
-                if (_selectedProduct != value)
-                {
-                    _selectedProduct = value;
-                    //OnPropertyChanged(nameof(SelectedProduct));
-                }
+                Set(ref _selectedProduct, value);
             }
         }
 
@@ -120,15 +96,11 @@ namespace ECommerceAdmin.ViewModel
             get { return _searchProductText; }
             set
             {
-                if (_searchProductText != value)
-                {
-                    _searchProductText = value;
-                    //OnPropertyChanged(nameof(SearchProductText));
-                }
+                Set(ref _searchProductText, value);
             }
         }
 
-        
+
         public RelayCommand SearchProductBtn => new(async () =>
         {
             //find better method
@@ -156,6 +128,7 @@ namespace ECommerceAdmin.ViewModel
                     _db.Products.Remove(_selectedProduct);
                     _db.SaveChangesAsync();
 
+                    Products.Remove(_selectedProduct);
                 }
             });
         }
@@ -170,11 +143,7 @@ namespace ECommerceAdmin.ViewModel
             get { return _selectedCategory; }
             set
             {
-                if (_selectedCategory != value)
-                {
-                    _selectedCategory = value;
-                    //OnPropertyChanged(nameof(SelectedCategory));
-                }
+                Set(ref _selectedCategory, value);
             }
         }
 
@@ -184,11 +153,7 @@ namespace ECommerceAdmin.ViewModel
             get { return _searchCategoryText; }
             set
             {
-                if (_searchCategoryText != value)
-                {
-                    _searchCategoryText = value;
-                    //OnPropertyChanged(nameof(SearchCategoryText));
-                }
+                Set(ref _searchCategoryText, value);
             }
         }
 
@@ -220,6 +185,7 @@ namespace ECommerceAdmin.ViewModel
                     _db.Categories.Remove(_selectedCategory);
                     _db.SaveChangesAsync();
 
+                    Categories.Remove(_selectedCategory);
                 }
             });
         }
@@ -234,11 +200,7 @@ namespace ECommerceAdmin.ViewModel
             get { return _selectedAdmin; }
             set
             {
-                if (_selectedAdmin != value)
-                {
-                    _selectedAdmin = value;
-                    //OnPropertyChanged(nameof(SelectedAdmin));
-                }
+                Set(ref _selectedAdmin, value);
             }
         }
 
@@ -248,11 +210,7 @@ namespace ECommerceAdmin.ViewModel
             get { return _searchAdminText; }
             set
             {
-                if (_searchAdminText != value)
-                {
-                    _searchAdminText = value;
-                    //OnPropertyChanged(nameof(SearchAdminText));
-                }
+                Set(ref _searchAdminText, value);
             }
         }
 
@@ -285,6 +243,7 @@ namespace ECommerceAdmin.ViewModel
                     _db.Users.Remove(_selectedAdmin);
                     _db.SaveChangesAsync();
 
+                    Admins.Remove(_selectedAdmin);
                 }
             });
         }

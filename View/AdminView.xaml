@@ -83,7 +83,7 @@
                         </WrapPanel>
 
                         <ScrollViewer Grid.Row="1">
-                            <ListBox ItemsSource="{Binding Products}"
+                            <ListBox ItemsSource="{Binding Products}" 
                                      SelectedItem="{Binding SelectedProduct}">
                                 <ListBox.ItemTemplate>
                                     <DataTemplate>
