@@ -27,6 +27,8 @@ namespace ECommerceAdmin
 
             Container.RegisterSingleton<MainWindowViewModel>();
             Container.RegisterSingleton<AdminViewModel>();
+            Container.RegisterSingleton<AddProductViewModel>();
+
 
             Container.Verify();
         }

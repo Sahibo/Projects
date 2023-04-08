@@ -24,5 +24,20 @@ namespace ECommerceAdmin.View
         {
             InitializeComponent();
         }
+
+        private void CloseBtn(object sender, RoutedEventArgs e)
+        {
+            App.Current.Shutdown();
+        }
+
+        private void MinimizeBtn(object sender, RoutedEventArgs e)
+        {
+            App.Current.MainWindow.WindowState = WindowState.Minimized;
+        }
+
+        private void MoveWindow(object sender, MouseButtonEventArgs e)
+        {
+            App.Current.MainWindow.DragMove();
+        }
     }
 }

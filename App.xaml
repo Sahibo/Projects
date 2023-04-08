@@ -11,7 +11,11 @@
             <DataTemplate DataType="{x:Type viewModel:AdminViewModel}">
                 <view:AdminView></view:AdminView>
             </DataTemplate>
-            
+
+            <DataTemplate DataType="{x:Type viewModel:AddProductViewModel}">
+                <view:AddProductView></view:AddProductView>
+            </DataTemplate>
+
 
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
