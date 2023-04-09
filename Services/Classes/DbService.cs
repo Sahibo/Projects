@@ -1,4 +1,5 @@
-﻿using ECommerceAdmin.Data.DbContext;
+﻿using System;
+using ECommerceAdmin.Data.DbContext;
 using ECommerceAdmin.Model;
 using System.Linq;
 using System.Collections.ObjectModel;
@@ -31,5 +32,19 @@ namespace ECommerceAdmin.Services.Classes
             return new ObservableCollection<User>(_context.Users.Where(p => p.Name.Equals(result) || p.Role.Equals(result)).ToList());
 
         }
+
+        public bool ProductService(Product _product)
+        {
+            //This function does not work correctly
+
+            if (_product != null)
+            {
+                _context.Products.AddAsync(_product);
+                _context.SaveChangesAsync();
+                return true;
+            }
+            return false;
+        }
+
     }
 }

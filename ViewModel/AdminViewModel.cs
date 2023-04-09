@@ -24,6 +24,7 @@ namespace ECommerceAdmin.ViewModel
         private readonly DbService _service;
 
         private ObservableCollection<Product> _products;
+        private ObservableCollection<ProductAttribute> _productAttributes;
         private ObservableCollection<Category> _categories;
         private ObservableCollection<User> _admins;
         private ObservableCollection<Order> _orders;
@@ -36,6 +37,15 @@ namespace ECommerceAdmin.ViewModel
             {
                 Set(ref _products, value);
                
+            }
+        }
+        public ObservableCollection<ProductAttribute> ProductAttributes
+        {
+            get => _productAttributes;
+            set
+            {
+                Set(ref _productAttributes, value);
+
             }
         }
         public ObservableCollection<Category> Categories
@@ -72,6 +82,7 @@ namespace ECommerceAdmin.ViewModel
             _service = new DbService(_db);
 
             Products = new ObservableCollection<Product>(_db.Products.ToList());
+            ProductAttributes = new ObservableCollection<ProductAttribute>(_db.ProductAttributes.ToList());
             Categories = new ObservableCollection<Category>(_db.Categories.ToList());
             Admins = new ObservableCollection<User>(_db.Users.Where(a => a.Role != "User").ToList());
             Orders = new ObservableCollection<Order>(_db.Orders.ToList());
@@ -115,7 +126,7 @@ namespace ECommerceAdmin.ViewModel
         {
             get => new(() =>
             {
-                _navigationService.NavigateTo<AddProductViewModel>(); //selected item goes to the new window
+                _navigationService.NavigateTo<AddProductViewModel>();
             });
         }
 
@@ -133,6 +144,22 @@ namespace ECommerceAdmin.ViewModel
             });
         }
 
+        public RelayCommand EditProductBtn
+        {
+            get => new(() =>
+            {
+                //send selected product
+                _navigationService.NavigateTo<EditProductViewModel>();
+            });
+        }
+        public RelayCommand ProductAttributesBtn
+        {
+            get => new(() =>
+            {
+                //send selected product
+                _navigationService.NavigateTo<AttributesViewModel>();
+            });
+        }
         #endregion
 
         #region Categories

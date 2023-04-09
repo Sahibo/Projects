@@ -69,17 +69,25 @@
                                      BorderBrush="{DynamicResource MaterialDesignDivider}" 
                                      Style="{StaticResource MaterialDesignTextBox}"/>
                             <Button Command="{Binding SearchProductBtn}"
-                                    Height="55" Width="100"
+                                    Height="50" Width="100"
                                     Background="#0f1b27">
                                 <mD:PackIcon Kind="Search" Margin="5"
                                              Height="35" Width="50"
                                              Foreground="#d9d9d9"/>
                             </Button>
+
                             <!--<ComboBox Height="55" Width="100" 
                                       BorderBrush="{DynamicResource MaterialDesignDivider}"
                                       Style="{StaticResource MaterialDesignOutlinedComboBox}">
                             </ComboBox>-->
+                            <Border Width="140"/>
 
+                            <Button Command="{Binding ProductAttributesBtn}"
+                                    Content="Attributes" FontWeight="Bold"
+                                    Height="50" Width="300"
+                                    Background="#0f1b27" Foreground="#d9d9d9"
+                                    BorderBrush="#d9d9d9"/>
+                            
                         </WrapPanel>
 
                         <ScrollViewer Grid.Row="1">
@@ -89,7 +97,7 @@
                                     <DataTemplate>
                                         <WrapPanel>
                                             <Image Width="50" Height="50" Source="{Binding ImageUrl}" Margin="5"/>
-                                            <StackPanel>
+                                            <StackPanel Width="200">
                                                 <WrapPanel>
                                                     <TextBlock Text="{Binding Id}" FontWeight="Bold" Margin="5 0"/>
                                                     <TextBlock Text="{Binding Name}" FontWeight="Bold" Margin="5 0"/>
@@ -100,6 +108,14 @@
                                                     <TextBlock Text="{Binding CategoryId}" Margin="5 0"/>
                                                 </WrapPanel>
                                             </StackPanel>
+
+                                            <!--<Border Width="335"/>
+
+                                            <Button Command="{Binding ProductAttributesBtn}"
+                                                    Content="Attributes" FontWeight="Bold"
+                                                    Width="125" Height="50"
+                                                    Background="#0f1b27" Foreground="#d9d9d9"
+                                                    BorderBrush="#d9d9d9"/>-->
                                         </WrapPanel>
                                     </DataTemplate>
                                 </ListBox.ItemTemplate>

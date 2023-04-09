@@ -16,6 +16,13 @@
                 <view:AddProductView></view:AddProductView>
             </DataTemplate>
 
+            <DataTemplate DataType="{x:Type viewModel:EditProductViewModel}">
+                <view:EditProductView></view:EditProductView>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:AttributesViewModel}">
+                <view:AttributesView></view:AttributesView>
+            </DataTemplate>
 
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
