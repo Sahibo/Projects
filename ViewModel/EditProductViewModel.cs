@@ -9,6 +9,7 @@ using ECommerceAdmin.Model;
 using ECommerceAdmin.Services.Classes;
 using ECommerceAdmin.Services.Interfaces;
 using GalaSoft.MvvmLight;
+using Microsoft.EntityFrameworkCore;
 
 namespace ECommerceAdmin.ViewModel
 {
@@ -18,8 +19,10 @@ namespace ECommerceAdmin.ViewModel
 
         private readonly EcommerceContext _db;
         private readonly DbService _service;
-        public ObservableCollection<Product> _products { get; set; }
-        public ObservableCollection<Category> _categories { get; set; }
+        //public ObservableCollection<Product> _products { get; set; }
+        //public ObservableCollection<Category> _categories { get; set; }
+
+        public Product product { get; set; }
 
         public EditProductViewModel(INavigationService navigationService)
         {
@@ -27,8 +30,9 @@ namespace ECommerceAdmin.ViewModel
             _db = new EcommerceContext();
             _service = new DbService(_db);
 
-            _products = new ObservableCollection<Product>(_db.Products.ToList());
-            _categories = new ObservableCollection<Category>(_db.Categories.ToList());
+            product = _db.Products.SingleOrDefault(x => x.Id == 1);
+            //_products = new ObservableCollection<Product>(_db.Products.ToList());
+            //_categories = new ObservableCollection<Category>(_db.Categories.ToList());
         }
 
 
